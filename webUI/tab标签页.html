@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>tabl切换</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<style>
+.outer {width:450px;margin:150px auto;}
+.tab {overflow:hidden;zoom:1;background:#000;border:1px solid #000;}
+.tab li {
+	float: left;
+	color: #fff;
+	height: 30px;
+	cursor: pointer;
+	line-height: 30px;
+	padding: 0 20px;
+}
+.tab li.current {color:#000;background:#ccc;}
+.content {
+	border: 1px solid #000;
+	border-top-width: 0;
+	height: 100px;
+	padding: 20px;
+}
+.content li {
+	line-height: 25px;
+	display: none;
+	margin-top: 0;
+	margin-right: 30px;
+	margin-bottom: 0;
+	margin-left: 30px;
+}
+</style>
+<script src="js/jquery-1.4.4.min.js"></script>
+<script>
+//data-toggle="tab" , data-target="目标节点"添加到每个tab上。
+//data-tab="content" 属性添加每个tab内容上。
+//推荐格式<ul><li data-toggle="tab" data-target="目标节点"></li><li data-toggle="tab" data-target="目标节点"></li></ul><ul><li data-tab="目标节点"></li><li data-tab="目标节点"></li></ul>
+	$(function(){						
+			$("[data-toggle='tab']").hover(function(){
+				var $this=$(this);var $index=$this.index();var $target=$this.attr("data-target");
+				$this.addClass("current").siblings("[data-toggle='tab']").removeClass("current");
+				$("[data-tab='"+$target+"']").hide().eq($index).show();
+			})
+	});
+</script>
+</head>
+<body>
+<div class="outer">
+    <ul class="tab">
+        <li class="current" data-toggle="tab" data-target="content">tab标签</li>
+        <li data-toggle="tab" data-target="content">qq在线客服代码</li>
+        <li data-toggle="tab" data-target="content">css3</li>
+  </ul>
+    <ul class="content">
+      <li style="display:block;" data-tab="content">
+           <a href="/tab">tab标签</a>
+        </li>
+      <li data-tab="content">
+            <a href="/service">qq在线客服代码</a>
+        </li>
+        <li data-tab="content">
+           <a href="/js/css3">css3</a>
+        </li>
+    </ul>
+</div>
+<div class="outer">
+    <ul class="tab">
+        <li class="current" data-toggle="tab" data-target="content2">tab标签</li>
+        <li data-toggle="tab" data-target="content2">qq在线客服代码</li>
+        <li data-toggle="tab" data-target="content2">css3</li>
+  </ul>
+    <ul class="content">
+      <li style="display:block;" data-tab="content2">
+           <a href="/tab">tab标签</a>
+        </li>
+      <li data-tab="content2">
+            <a href="/service">qq在线客服代码</a>
+        </li>
+        <li data-tab="content2">
+           <a href="/js/css3">css3</a>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>

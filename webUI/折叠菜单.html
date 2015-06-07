@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery简洁折叠菜单</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<style>
+[data-toggle=collapse] .list{
+	position: absolute;
+	right: 10px;
+	top: 12px;
+	font-weight: 100;
+	font-size: 12px;
+	color: #CCC;
+}
+[data-toggle=collapse] .list:before{content:"\2b";}
+.current .list:before{content:"\2212";}
+.left{
+	width: 200px;
+
+	border: 1px solid #ccc;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+.div1{text-align:center; width:200px; padding-top:10px;}
+.div2{
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	font-size: 13px;
+	position: relative;
+	border-bottom: #ccc 1px dotted;
+	overflow: hidden;
+	width: 98%;
+}
+.div3{display: none;cursor:pointer; font-size:13px;}
+.div3 ul{margin:0;padding:0;}
+.div3 li{
+	height: 30px;
+	line-height: 30px;
+	border-bottom: #ccc 1px dotted;
+	text-align: center;
+	width: 98%;
+}
+
+/*折叠菜单2 */
+.case2 h3 { font-family: "Microsoft YaHei",微软雅黑; font-size:16px; background:#f7f7f7; height:43px; line-height:43px; padding-left:12px; }
+.case2 dl dd a { padding-left:30px; text-decoration:none; font-size:14px; color:#555; display:block;  height:43px;  line-height:43px; border-bottom:1px dotted #d2d2d2; }
+.case2 dl dt {
+	border-bottom: 1px dotted #d2d2d2;
+	width: 100%;
+	position: relative;
+	min-height: 43px;
+	_height: 43px;
+	z-index: 10;
+	zoom: 1;
+	list-style-type: none;
+}
+.case2 dt h4 {
+	position: relative;
+	cursor: pointer;
+	padding-left: 30px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #000;
+	display: block;
+	line-height: 43px;
+	font-weight: bold;
+	
+}
+.case2 .none {display:none;}
+.case2 {
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	padding-left: 200px;
+	height: 500px;
+	width: 800px;
+}
+
+</style>
+<script src="js/jquery-1.4.4.min.js"></script>
+<script>
+//data-toggle="collapse" 添加到您想要展开或折叠的组件的链接上。
+//data-collapse="panel-collapse" 属性添加到折叠菜单。
+//推荐格式<dl><dt data-toggle="collapse"></dt><dd data-collapse="panel-collapse"></dd></dl>
+$(function(){
+	$("[data-toggle='collapse']").click(function(){ 
+		$(this).toggleClass("current").next("[data-collapse='panel-collapse']").slideToggle("slow").siblings("[data-collapse='panel-collapse']:visible").slideUp("slow").siblings("[data-toggle='collapse']");
+		$(this).siblings("[data-toggle='collapse']").removeClass("current");
+	});
+});
+
+</script>
+</head>
+<body>
+<!-- 代码部分begin -->
+<div class="left">
+<div class="div1">
+<div class="left_top">
+ <a href="#" style="width:40px; height:32px; display:inline-block; padding-top:8px; background-color: #7CD11F">
+    <span class="glyphicon glyphicon-th" style="color: #fff;"></span>
+ </a>
+  <a href="#" style="width:40px; height:32px; display:inline-block; padding-top:8px; background-color: #8ABEDB">
+    <span class="glyphicon glyphicon-pencil" style="color: #fff;"></span>
+ </a>
+   <a href="#" style="width:40px; height:32px; display:inline-block; padding-top:8px; background-color: #F4C157">
+    <span class="glyphicon glyphicon-home" style="color: #fff;"></span>
+ </a>  
+   <a href="#" style="width:40px; height:32px; display:inline-block; padding-top:8px; background-color: #FD7355">
+    <span class="glyphicon glyphicon-trash" style="color: #fff;"></span>
+ </a>
+</div>
+  <div class="div2" data-toggle="collapse">
+  	<span class="glyphicon glyphicon-cog" style="font-size:16px;position: absolute; top:12px; left:40px;"></span>    基本管理<span class="glyphicon list"></span>
+  </div>
+  <div class="div3" data-collapse="panel-collapse">
+	<ul>
+		<li> 网站配置</li>
+		<li> 管理设置</li>
+        <li> 导航菜单</li>
+	</ul>
+  </div>
+  <div class="div2" data-toggle="collapse">
+<span class="glyphicon glyphicon-user" style="font-size:16px;position: absolute; top:12px; left:40px;"></span>
+    新闻中心<span class="glyphicon list"></span>
+  </div>
+  <div class="div3" data-collapse="panel-collapse">
+      <ul>
+		<li> 管理文章</li>
+		<li> 文章分类</li>
+        <li> 添加文章</li>
+      </ul>
+  </div>
+  <div class="div2" data-toggle="collapse">
+<span class="glyphicon glyphicon-th" style="font-size:16px;position: absolute; top:12px; left:40px;"></span>
+    最新产品<span class="glyphicon list"></span>
+  </div>
+  <div class="div3" data-collapse="panel-collapse">
+    <ul>
+		<li>图片管理</li>
+		<li>图片分类</li>
+        <li>添加图片</li>
+    </ul>
+  </div>
+  <div class="div2" data-toggle="collapse">
+<span class="glyphicon glyphicon-list" style="font-size:16px;position: absolute; top:12px; left:40px;"></span>
+    栏目添加<span class="glyphicon list"></span>
+  </div>
+  <div class="div3" data-collapse="panel-collapse">
+     <ul>
+		<li>文章系统</li>
+		<li>图片系统</li>
+        <li>添加表单</li>
+        <li>招聘系统</li>
+     </ul>
+  </div>
+</div>
+</div>
+<!---折叠菜单2--->
+<div class="case2">
+<h3>例子2导航</h3>
+<dl>
+<dt data-toggle="collapse"> <h4>头部导航</h4><span class="glyphicon list"></span></dt>
+         <dd class="none" data-collapse="panel-collapse">
+         <dl><dt data-toggle="collapse"> <h4>头部导航</h4><span class="glyphicon list"></span></dt>
+            <dd style="padding-left:50px; width:100%" class="none" data-collapse="panel-collapse">
+            <a href="http://www.lanrenzhijia.com/flash/">Flash素材</a>
+            <a href="http://www.lanrenzhijia.com/nav/">菜单导航</a>
+            <a href="http://www.lanrenzhijia.com/time/">时间日期</a>
+            <a href="http://www.lanrenzhijia.com/banner/">焦点图</a></dd> </dl>
+            <a href="http://www.lanrenzhijia.com/flash/">Flash素材</a>
+            <a href="http://www.lanrenzhijia.com/nav/">菜单导航</a>
+            <a href="http://www.lanrenzhijia.com/time/">时间日期</a>
+            <a href="http://www.lanrenzhijia.com/banner/">焦点图</a>
+          
+          </dd>
+   
+<dt data-toggle="collapse"> <h4>js网页特效</h4><span class="glyphicon list"></span></dt>
+          <dd class="none" data-collapse="panel-collapse">
+            <a href="http://www.lanrenzhijia.com/jquery/">jquery特效</a>
+            <a href="http://www.lanrenzhijia.com/banner/">焦点图</a>
+            <a href="http://www.lanrenzhijia.com/nav/">菜单导航</a>
+            <a href="http://www.lanrenzhijia.com/js/css3/">CSS3特效</a>
+            <a href="http://www.lanrenzhijia.com/">全部特效</a>            
+    </dd>
+<dt data-toggle="collapse"><h4>Flash素材</h4><span class="glyphicon list"></span></dt>
+          <dd class="none" data-collapse="panel-collapse">
+          <a href="http://www.lanrenzhijia.com/flash/qt/" target="_blank">蜻蜓素材</a> 
+          <a href="http://www.lanrenzhijia.com/flash/md/" target="_blank">牡丹素材</a> 
+          <a href="http://www.lanrenzhijia.com/flash/xy/" target="_blank">下雨素材</a> 
+          <a href="http://www.lanrenzhijia.com/flash/" target="_blank">全部素材</a>
+          </dd>
+
+  </dl>
+  </div>
+
+
+</body>
+</html>

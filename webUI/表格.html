@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表格</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<style>
+ul {
+	position: relative;
+        width:793px;
+	margin: 0px;
+        padding: 0px;
+	border: 1px #E6E6E6 solid;
+        border-bottom: 0px;
+        border-right: 0px;
+}
+li {
+	position: relative;
+        float: left;
+	height: 100px;
+	width: 100px;
+	list-style-type: none;
+	border: 1px #E6E6E6 solid;
+	margin: -1px 0 0 -1px;
+}
+table {
+	background-color: transparent;
+	border-collapse: collapse;
+border-spacing: 0;
+}
+caption {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	color: #777;
+	text-align: left
+}
+th {
+	text-align: left
+}
+.table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 20px
+}
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+border: 1px solid #ddd;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+}
+.table>thead>tr>th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #ddd;
+}
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+	border-top: 0
+}
+.table>tbody+tbody {
+	border-top: 2px solid #ddd;
+}
+.table .table {
+	background-color: #fff;
+}
+th {
+	padding: 5px
+}
+.table-bordered {
+	border: 1px solid #ddd
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #f9f9f9
+}
+.table-hover>tbody>tr:hover {
+	background-color: #f5f5f5
+}
+table col[class*=col-] {
+	position: static;
+	display: table-column;
+	float: none
+}
+table td[class*=col-], table th[class*=col-] {
+	position: static;
+	display: table-cell;
+	float: none
+}
+.table-responsive {
+	min-height: .01%;
+	overflow-x: auto
+}
+
+</style>
+</head>
+
+<body style="padding:20px;">
+<ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+<table class="table table-bordered">
+   <caption>边框表格布局</caption>
+   <thead>
+      <tr>
+         <th>名称</th>
+         <th>城市</th>
+         <th>密码</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Tanmay</td>
+         <td>Bangalore</td>
+         <td>560001</td>
+      </tr>
+      <tr>
+         <td>Sachin</td>
+         <td>Mumbai</td>
+         <td>400003</td>
+      </tr>
+      <tr>
+         <td>Uma</td>
+         <td>Pune</td>
+         <td>411027</td>
+      </tr>
+   </tbody>
+</table>
+<table class="table table-condensed">
+   <caption>精简表格布局</caption>
+   <thead>
+      <tr>
+         <th>名称</th>
+         <th>城市</th>
+         <th>密码</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Tanmay</td>
+         <td>Bangalore</td>
+         <td>560001</td>
+      </tr>
+      <tr>
+         <td>Sachin</td>
+         <td>Mumbai</td>
+         <td>400003</td>
+      </tr>
+      <tr>
+         <td>Uma</td>
+         <td>Pune</td>
+         <td>411027</td>
+      </tr>
+   </tbody>
+</table>
+<table class="table table-striped">
+   <caption>条纹表格布局</caption>
+   <thead>
+      <tr>
+         <th>名称</th>
+         <th>城市</th>
+         <th>密码</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Tanmay</td>
+         <td>Bangalore</td>
+         <td>560001</td>
+      </tr>
+      <tr>
+         <td>Sachin</td>
+         <td>Mumbai</td>
+         <td>400003</td>
+      </tr>
+      <tr>
+         <td>Uma</td>
+         <td>Pune</td>
+         <td>411027</td>
+      </tr>
+   </tbody>
+</table>
+<table class="table table-bordered">
+   <caption>边框表格布局</caption>
+   <thead>
+      <tr>
+         <th>名称</th>
+         <th>城市</th>
+         <th>密码</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Tanmay</td>
+         <td>Bangalore</td>
+         <td>560001</td>
+      </tr>
+      <tr>
+         <td>Sachin</td>
+         <td>Mumbai</td>
+         <td>400003</td>
+      </tr>
+      <tr>
+         <td>Uma</td>
+         <td>Pune</td>
+         <td>411027</td>
+      </tr>
+   </tbody>
+</table>
+<table class="table table-hover">
+   <caption>悬停表格布局</caption>
+   <thead>
+      <tr>
+         <th>名称</th>
+         <th>城市</th>
+         <th>密码</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Tanmay</td>
+         <td>Bangalore</td>
+         <td>560001</td>
+      </tr>
+      <tr>
+         <td>Sachin</td>
+         <td>Mumbai</td>
+         <td>400003</td>
+      </tr>
+      <tr>
+         <td>Uma</td>
+         <td>Pune</td>
+         <td>411027</td>
+      </tr>
+   </tbody>
+</table>
+</body>
+</html>
