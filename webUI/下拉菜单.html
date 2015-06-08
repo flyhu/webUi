@@ -111,13 +111,15 @@
 <script src="js/jquery-1.4.4.min.js"></script>
 <script type=text/javascript>
 // 添加data-toggle="dropdown" , data-target="目标节点" 来切换菜单。
-//data-target="目标节点" 添加到要显示的菜单
+//data-dropdown="目标节点" 添加到要显示的菜单
 $(function(){
 	$("[data-toggle='dropdown']").hover(function(){
 		var $target=$(this).attr("data-target");
-		$("[data-dropdown='"+$target+"']").stop(true,true).fadeIn();
+		$("[data-dropdown='"+$target+"']").stop(true,true).fadeIn();	
+	},function(){
+		var $target=$(this).attr("data-target");
+		$("[data-dropdown='"+$target+"']").stop(true,true).fadeOut();
 	});
-	
 });
 
 </script>
@@ -162,15 +164,25 @@ $(function(){
 </ul>
 
 
-<div style="position:relative; top:200px; left:100px; ">
+<div style="position:relative; top:200px; left:100px;width:200px; ">
 <div data-toggle="dropdown" data-target="myweb6" style="width:200px; height:30px; background-color: #C0C0C0; text-align:center; line-height:30px; ">
 下拉菜单
-</div><div data-dropdown="myweb6" style="position:absolute;top:30px;left:0; display:none; width:200px; height:150px; background-color: #D5D5D5">  
+<div data-dropdown="myweb6" style="position:absolute;top:0;left:200px; display:none; width:200px; height:150px; background-color: #D5D5D5">  
  <ul style="padding-top:8px;">
           <li><a href="#">下拉菜单</a></li>
           <li><a href="#">您自定义</a></li>
           <li><a href="#">您自定义</a></li>
           <li><a href="#">您自定义</a></li>
  </ul>   </div></div>
+<div data-toggle="dropdown" data-target="myweb7" style="width:200px; height:30px; background-color: #B7B7B7; text-align:center; line-height:30px; ">
+下拉菜单2
+<div data-dropdown="myweb7" style="position:absolute;top:0;left:200px; display:none; width:200px; height:150px; background-color: #F0F0F0">  
+ <ul style="padding-top:8px;">
+          <li><a href="#">下拉菜单</a></li>
+          <li><a href="#">您自定义</a></li>
+          <li><a href="#">您自定义</a></li>
+          <li><a href="#">您自定义</a></li>
+ </ul>   </div></div> 
+ </div>
 </body>
 </html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>信息提示</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.tooltip {
+	font-size: 12px;
+	line-height: 1.4;
+	visibility: visible;
+}
+.tooltip.top {
+	padding: 5px 0;
+	margin-top: -3px;
+}
+.tooltip.in {
+	opacity: .9;
+	filter: alpha(opacity=90);
+}
+.tooltip.top .tooltip-arrow {
+position: absolute;
+width: 0;
+height: 0;
+border-color: transparent;
+border-style: solid;
+bottom: 0;
+left: 50%;
+margin-left: -5px;
+border-top-color: #000;
+border-width: 5px 5px 0;
+
+}
+.tooltip .tooltip-inner {
+	max-width: 200px;
+	padding: 3px 8px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	border-radius: 4px;
+}
+</style>
+<script src="js/jquery-1.4.4.min.js"></script>
+<script type=text/javascript>
+// 添加data-toggle="dropdown" , data-target="目标节点" 来切换菜单。
+//data-target="目标节点" 添加到要显示的菜单
+$(function(){
+	var left = $(".tooltip-show").offset().left;
+	var top = $(".tooltip-show").offset().top;
+	var toolWidth=$(".tooltip-inner").width();
+	$(".tooltip").css({"left":left,"top":top,"width":toolWidth})
+	$(".tooltip").width(toolWidth);
+});
+
+</script>
+</head>
+<body>
+<span style="position:relative; left:200px; top:150px;">
+<a href="#" class="tooltip-show" data-toggle="tooltip" title="" data-original-title="show">Tooltip 方法 show </a>
+</span>
+<div class="tooltip top in" style="display: block; position:absolute;">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner">show</div>
+</div>
+</body>
+</html>

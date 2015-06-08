@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>模态框</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.modal {
+	z-index:9999;
+	position:fixed;
+	top:50%;
+	left:50%;
+	width:660px;
+	height:360px;
+	margin:-180px 0 0 -330px;
+	border-radius:8px;
+	border:solid 2px #666;
+	background-color:#fff;
+	display:none;
+	box-shadow: 0 0 10px #666;
+}
+.modal-mask {
+	z-index: 9998;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	display:none;
+}
+.modal-body {
+	padding:60px 15px;
+	color:#444;
+	height: 148px;
+}
+.modal-header {
+	border-bottom:1px solid #ddd;
+	padding:12px;
+	position: relative;
+}
+.modal-header .close {
+	float: right;
+	color: #C0C0C0;
+	padding: 5px;
+	margin: -2px -5px -5px;
+	text-shadow: 0 1px 0 #ddd;
+	font-family: simsun;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: bold;
+}
+.modal-header .close:hover {
+	color:#444;
+}
+</style>
+<script src="js/jquery-1.4.4.min.js"></script>
+<script type=text/javascript>
+// 添加data-toggle="modal" , data-target="目标节点" 添加到控制器元素。
+//data-modal="目标节点" 添加到要显示的模态框
+$(function(){
+	$("[data-toggle='modal']").click(function(){
+		var $target=$(this).attr("data-target");
+		$('.modal-mask').fadeIn();
+		$("[data-modal='"+$target+"']").slideDown(200);
+	})
+	$('.modal-header .close').click(function(){
+		$('.modal-mask').fadeOut(100);
+		$('.modal').slideUp(200);
+	})
+
+});
+
+</script>
+</head>
+<body>
+<div style="position:relative;left:50%; top:200px;">
+<a href="javascript:;" data-toggle="modal" data-target="myModal" >点击查看效果</a>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal" data-modal="myModal">
+     <div class="modal-header">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h4 class="modal-title">登录 是一种态度</h4>
+     </div>   
+      <!-- modal-content --> 
+      <div class="modal-body">
+        
+          <form name="loginform" action="" method="post">
+                <ol>
+                     <li><h4>你必须先登录！</h4></li>
+                     <li><strong>用户名：</strong><input class="ipt" type="text" name="log"  size="20" /></li>
+                     <li><strong>密码：</strong><input class="ipt" type="password" name="pwd"  size="20" /></li>
+                     <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
+                </ol>
+           </form>
+            
+     </div><!-- ./modal-content --> 
+</div>
+<div class="modal-mask"></div>
+<!-- ./模态框（Modal） -->
+</body>
+</html>
