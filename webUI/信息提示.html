@@ -5,35 +5,34 @@
 <title>信息提示</title>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-.tooltip {
+[data-tooltip="show"] {
+	position: absolute;
+	z-index:999;
 	font-size: 12px;
 	line-height: 1.4;
-	visibility: visible;
-}
-.tooltip.top {
+	visibility: hidden;
 	padding: 5px 0;
 	margin-top: -3px;
+	opacity: .8;
+	filter: alpha(opacity=80);
+	-webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
 }
-.tooltip.in {
-	opacity: .9;
-	filter: alpha(opacity=90);
+[data-tooltip="show"] .tooltip-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-top-color: #000;
+	border-width: 5px 5px 0;
 }
-.tooltip.top .tooltip-arrow {
-position: absolute;
-width: 0;
-height: 0;
-border-color: transparent;
-border-style: solid;
-bottom: 0;
-left: 50%;
-margin-left: -5px;
-border-top-color: #000;
-border-width: 5px 5px 0;
-
-}
-.tooltip .tooltip-inner {
-	max-width: 200px;
-	padding: 3px 8px;
+[data-tooltip="show"] .tooltip-inner {
+	max-width: 400px; min-width:100px;
+	padding: 8px 15px;
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
@@ -43,25 +42,47 @@ border-width: 5px 5px 0;
 </style>
 <script src="js/jquery-1.4.4.min.js"></script>
 <script type=text/javascript>
-// 添加data-toggle="dropdown" , data-target="目标节点" 来切换菜单。
-//data-target="目标节点" 添加到要显示的菜单
+// 锚标签添加 data-toggle="tooltip"、data-original-title="文本"，可加入html标签
+//data-tooltip="show"为tooltip显示工具，放在页面结尾
 $(function(){
-	var left = $(".tooltip-show").offset().left;
-	var top = $(".tooltip-show").offset().top;
-	var toolWidth=$(".tooltip-inner").width();
-	$(".tooltip").css({"left":left,"top":top,"width":toolWidth})
-	$(".tooltip").width(toolWidth);
+	$("[data-toggle='tooltip']").hover(function(){
+			var TooltipLeft = $(this).offset().left - $("[data-tooltip='show']").outerWidth()/2 + $(this).outerWidth()/2;
+	var TooltipTop = $(this).offset().top - $("[data-tooltip='show']").outerHeight();
+	var TooltipContent=$(this).attr("data-original-title");
+	$("[data-tooltip='show']").css({"left":TooltipLeft,"top":TooltipTop,"visibility":"visible"});
+	$("[data-tooltip='show'] .tooltip-inner").html(TooltipContent);
+		},function(){
+			$("[data-tooltip='show']").css({"left":0,"top":0,"visibility":"hidden"});
+		})
+	
+
 });
 
 </script>
 </head>
 <body>
-<span style="position:relative; left:200px; top:150px;">
-<a href="#" class="tooltip-show" data-toggle="tooltip" title="" data-original-title="show">Tooltip 方法 show </a>
-</span>
-<div class="tooltip top in" style="display: block; position:absolute;">
+
+<div style="padding:40px;">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><a href="#" data-toggle="tooltip" title="" data-original-title="<h6>内容：工具提示（Tooltip）插件 </h6>">工具提示（Tooltip）插件 </a> ，这是另外一个<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）插件">Tooltip 方法 show  </a></p>
+  <p>&nbsp;</p>
+  <p style="padding-left:200px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）插件 ">工具提示（Tooltip）插件 </a></p>
+  
+</div>
+<div style="padding:60px;">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><a href="#" data-toggle="tooltip" title="" data-original-title="<h6>内容：工具提示（Tooltip）插件 </h6>">工具提示（Tooltip）插件 </a> ，这是另外一个<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）插件">Tooltip 方法 show  </a></p>
+  <p>&nbsp;</p>
+  <p style="padding-left:200px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）插件 ">工具提示（Tooltip）插件 </a></p>
+  
+</div>
+<div data-tooltip="show">
   <div class="tooltip-arrow"></div>
-  <div class="tooltip-inner">show</div>
+  <div class="tooltip-inner"></div>
 </div>
 </body>
 </html>
