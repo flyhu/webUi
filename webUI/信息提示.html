@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>信息提示</title>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-[data-tooltip="show"] {
+<style>
+.tooltip {
 	position: absolute;
 	z-index:999;
 	font-size: 12px;
@@ -18,7 +18,7 @@
 	-webkit-transition: opacity .15s linear;
     transition: opacity .15s linear;
 }
-[data-tooltip="show"] .tooltip-arrow {
+.tooltip .tooltip-arrow {
 	position: absolute;
 	width: 0;
 	height: 0;
@@ -30,7 +30,7 @@
 	border-top-color: #000;
 	border-width: 5px 5px 0;
 }
-[data-tooltip="show"] .tooltip-inner {
+.tooltip .tooltip-inner {
 	max-width: 400px; min-width:100px;
 	padding: 8px 15px;
 	color: #fff;
@@ -46,11 +46,11 @@
 //data-tooltip="show"为tooltip显示工具，放在页面结尾
 $(function(){
 	$("[data-toggle='tooltip']").hover(function(){
-			var TooltipLeft = $(this).offset().left - $("[data-tooltip='show']").outerWidth()/2 + $(this).outerWidth()/2;
-	var TooltipTop = $(this).offset().top - $("[data-tooltip='show']").outerHeight();
-	var TooltipContent=$(this).attr("data-original-title");
-	$("[data-tooltip='show']").css({"left":TooltipLeft,"top":TooltipTop,"visibility":"visible"});
-	$("[data-tooltip='show'] .tooltip-inner").html(TooltipContent);
+		var TooltipLeft = $(this).offset().left - $("[data-tooltip='show']").outerWidth()/2 + $(this).outerWidth()/2;
+		var TooltipTop = $(this).offset().top - $("[data-tooltip='show']").outerHeight();
+		var TooltipContent=$(this).attr("data-original-title");
+		$("[data-tooltip='show']").css({"left":TooltipLeft,"top":TooltipTop,"visibility":"visible"});
+		$("[data-tooltip='show'] .tooltip-inner").html(TooltipContent);
 		},function(){
 			$("[data-tooltip='show']").css({"left":0,"top":0,"visibility":"hidden"});
 		})
@@ -77,10 +77,10 @@ $(function(){
   <p>&nbsp;</p>
   <p><a href="#" data-toggle="tooltip" title="" data-original-title="<h6>内容：工具提示（Tooltip）插件 </h6>">工具提示（Tooltip）插件 </a> ，这是另外一个<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）插件">Tooltip 方法 show  </a></p>
   <p>&nbsp;</p>
-  <p style="padding-left:200px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）插件 ">工具提示（Tooltip）插件 </a></p>
+  <p style="padding-left:200px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="内容：工具提示（Tooltip）<br>插件 ">工具提示（Tooltip）插件 </a></p>
   
 </div>
-<div data-tooltip="show">
+<div data-tooltip="show" class="tooltip">
   <div class="tooltip-arrow"></div>
   <div class="tooltip-inner"></div>
 </div>

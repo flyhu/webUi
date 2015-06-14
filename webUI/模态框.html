@@ -78,6 +78,10 @@ $(function(){
 <body>
 <div style="position:relative;left:50%; top:200px;">
 <a href="javascript:;" data-toggle="modal" data-target="myModal" >点击查看效果</a>
+<br /><br />
+<a href="javascript:;" data-toggle="modal" data-target="myModal2" >
+
+点击查看效果2</a>
 </div>
 <!-- 模态框（Modal） -->
 <div class="modal" data-modal="myModal">
@@ -99,6 +103,29 @@ $(function(){
            </form>
             
      </div><!-- ./modal-content --> 
+     
+</div>
+<!-- 模态框2（Modal） -->
+<div class="modal" data-modal="myModal2">
+     <div class="modal-header">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h4 class="modal-title">登录 是一种态度2</h4>
+     </div>   
+      <!-- modal-content --> 
+      <div class="modal-body">
+        
+          <form name="loginform" action="" method="post">
+                <ol>
+                     <li><h4>你必须先登录！</h4></li>
+                     <li><strong>用户名：</strong><input class="ipt" type="text" name="log"  size="20" /></li>
+                     <li>&nbsp;</li>
+                     <li><strong>密&nbsp;&nbsp;&nbsp;&nbsp;码：</strong><input class="ipt" type="password" name="pwd"  size="20" /></li>
+                     <li>&nbsp;</li><li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
+                </ol>
+           </form>
+            
+     </div><!-- ./modal-content --> 
+     
 </div>
 <div class="modal-mask"></div>
 <!-- ./模态框（Modal） -->

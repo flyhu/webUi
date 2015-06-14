@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>轮播图</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*轮播指标*/
+.carousel-indicators {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	z-index: 15;
+	width: 60%;
+	padding-left: 0;
+	margin-left: -30%;
+	text-align: center;
+	list-style: none;
+}
+
+.carousel-indicators li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 2px;
+	text-indent: -999px;
+	cursor: pointer;
+	background-color: #000 \9;
+	background-color: rgba(0,0,0,0);
+	border: 1px solid #fff;
+	border-radius: 10px;
+}
+.carousel-indicators .active {
+	width: 12px;
+	height: 12px;
+	margin: 0;
+	background-color: #fff;
+}
+/*轮播（Carousel）项目*/
+.carousel-inner{
+	position:absolute;
+}
+.carousel-inner li{
+	float: left;
+}
+
+/* 轮播（Carousel）导航*/
+.carousel-control.left, .carousel-control.right {
+	position: absolute;
+	top: 40%;
+	width: 10%;
+	height: inherit;
+	font-size: 36px;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.carousel-control:hover, .carousel-control:focus {
+	color: #fff;
+	text-decoration: none;
+	outline: 0;
+	opacity: .9;
+	filter: alpha(opacity=90);
+}
+.carousel-control.left {
+	left: 0;
+	right: auto;
+}
+.carousel-control.right {
+	right: 0;
+	left: auto;
+}
+/* 轮播（Carousel）标题*/
+.carousel-title{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 46px;
+	z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+}
+.carousel-title h4{line-height: 46px; margin:0;	color: #fff; padding-left:18px;}
+</style>
+<script src="js/jquery-1.4.4.min.js"></script>
+<script>
+//data-toggle="Carousel" 添加到轮播图节点中
+	$(function(){	
+	 $("[data-toggle='Carousel']").each(function(){
+	var $this=$(this);
+    var CarouselWidth = $this.width(); //获取轮播图图的宽度
+	var Carousellen =   $this.find(".carousel-inner li").length;   //获取焦点图个数
+	var Carouselindex = 0;
+	var picTimer;  //自动轮播
+	//标题显示
+	var CarouselTitle=$this.find(".carousel-inner li").eq(0).attr("title");
+	$this.find(".carousel-title h4").html(CarouselTitle);
+	//轮播指标
+	var CarouselIndicators="";
+	for(var i=0; i < Carousellen; i++) {
+		CarouselIndicators += "<li></li>";
+	}
+	$this.find(".carousel-indicators").append(CarouselIndicators);
+	$this.find(".carousel-indicators li").eq(0).addClass("active");
+	
+	$this.find(".carousel-indicators li").hover(function() {
+		$(this).addClass("active").siblings().removeClass("active");
+		index = $(this).index();
+		showCarousel(index);
+		var CarouselTitle=$this.find(".carousel-inner li").eq(index).attr("title");
+	    $this.find(".carousel-title h4").html(CarouselTitle);
+	});
+	
+	//自动轮播时间
+	$this.hover(function() {
+		clearInterval(picTimer);
+	},function() {
+		picTimer = setInterval(function() {
+			showCarousel(Carouselindex);
+			Carouselindex++;
+			if(Carouselindex == Carousellen) {Carouselindex = 0;}
+		},4000); 
+	}).trigger("mouseleave");
+	//上一页
+	$this.find("[data-slide='prev']").click(function() {
+		Carouselindex -= 1;
+		if(Carouselindex == -1) {Carouselindex = Carousellen - 1;}
+		showCarousel(Carouselindex);
+	});
+
+	//下一页
+	$this.find("[data-slide='next']").click(function() {
+		Carouselindex += 1;
+		if(Carouselindex == Carousellen) {Carouselindex = 0;}
+		showCarousel(Carouselindex);
+	});
+	 //轮播（Carousel）项目切换
+	$(".carousel-inner").css("width",CarouselWidth * (Carousellen));
+	function showCarousel(Carouselindex) {
+		var nowLeft = -Carouselindex*CarouselWidth; //计算ul元素的left值
+		$this.find(".carousel-inner").stop(true,false).animate({"left":nowLeft},300);
+		$this.find(".carousel-indicators li").siblings().removeClass("active").eq(Carouselindex).addClass("active");//轮播（Carousel）指标
+		var CarouselTitle=$this.find(".carousel-inner li").eq(Carouselindex).attr("title");
+	    $this.find(".carousel-title h4").html(CarouselTitle);
+	}
+	
+	 });					
+	
+	});
+</script>
+</head>
+<body>
+<div data-toggle="Carousel" style="width:480px; height:320px; margin: 0 auto; position:relative; overflow:hidden;"> 
+  <!-- 轮播（Carousel）指标 -->
+<ol class="carousel-indicators" style="text-align:right;">
+</ol>
+  <!-- 轮播（Carousel）项目 -->
+ <div class="carousel-title"> <h4></h4></div>
+   <ul class="carousel-inner">
+    <li style="width:480px; height:320px; background-color: red" title="标题1"></li>
+    <li style="width:480px; height:320px; background-color: gray" title="标题2"></li>
+    <li style="width:480px; height:320px; background-color: blue" title="标题3"></li>
+  </ul>
+
+  <!-- 轮播（Carousel）导航 --> 
+  <a class="carousel-control left" href="#myCarousel"  data-slide="prev">&lsaquo;</a> <a class="carousel-control right" href="#myCarousel"  data-slide="next">&rsaquo;</a> </div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div data-toggle="Carousel" style="width:480px; height:320px; margin: 0 auto; position:relative; overflow:hidden;"> 
+  <!-- 轮播（Carousel）指标 -->
+<ol class="carousel-indicators">
+</ol>
+  <!-- 轮播（Carousel）项目 -->
+  <ul class="carousel-inner">
+    <li style="width:480px; height:320px; background-color: rgba(138,207,89,1.00)"></li>
+    <li style="width:480px; height:320px; background-color: rgba(227,104,106,1.00)"></li>
+    <li style="width:480px; height:320px; background-color: rgba(66,86,237,1.00)"></li>
+  </ul>
+  <!-- 轮播（Carousel）导航 --> 
+  <a class="carousel-control left" href="#myCarousel"  data-slide="prev">&lsaquo;</a> <a class="carousel-control right" href="#myCarousel"  data-slide="next">&rsaquo;</a> </div>
+</body>
+</html>
