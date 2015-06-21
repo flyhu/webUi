@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -31,9 +31,6 @@
 	border-radius: 10px;
 }
 .carousel-indicators .active {
-	width: 12px;
-	height: 12px;
-	margin: 0;
 	background-color: #fff;
 }
 /*轮播（Carousel）项目*/
@@ -89,7 +86,7 @@
 	$(function(){	
 	 $("[data-toggle='Carousel']").each(function(){
 	var $this=$(this);
-    var CarouselWidth = $this.width(); //获取轮播图图的宽度
+        var CarouselWidth = $this.width(); //获取轮播图图的宽度
 	var Carousellen =   $this.find(".carousel-inner li").length;   //获取焦点图个数
 	var Carouselindex = 0;
 	var picTimer;  //自动轮播
@@ -107,7 +104,7 @@
 	$this.find(".carousel-indicators li").hover(function() {
 		$(this).addClass("active").siblings().removeClass("active");
 		index = $(this).index();
-		showCarousel(index);
+		ShowCarousel(index);
 		var CarouselTitle=$this.find(".carousel-inner li").eq(index).attr("title");
 	    $this.find(".carousel-title h4").html(CarouselTitle);
 	});
@@ -117,7 +114,7 @@
 		clearInterval(picTimer);
 	},function() {
 		picTimer = setInterval(function() {
-			showCarousel(Carouselindex);
+			ShowCarousel(Carouselindex);
 			Carouselindex++;
 			if(Carouselindex == Carousellen) {Carouselindex = 0;}
 		},4000); 
@@ -126,18 +123,18 @@
 	$this.find("[data-slide='prev']").click(function() {
 		Carouselindex -= 1;
 		if(Carouselindex == -1) {Carouselindex = Carousellen - 1;}
-		showCarousel(Carouselindex);
+		ShowCarousel(Carouselindex);
 	});
 
 	//下一页
 	$this.find("[data-slide='next']").click(function() {
 		Carouselindex += 1;
 		if(Carouselindex == Carousellen) {Carouselindex = 0;}
-		showCarousel(Carouselindex);
+		ShowCarousel(Carouselindex);
 	});
 	 //轮播（Carousel）项目切换
 	$(".carousel-inner").css("width",CarouselWidth * (Carousellen));
-	function showCarousel(Carouselindex) {
+	function ShowCarousel (Carouselindex) {
 		var nowLeft = -Carouselindex*CarouselWidth; //计算ul元素的left值
 		$this.find(".carousel-inner").stop(true,false).animate({"left":nowLeft},300);
 		$this.find(".carousel-indicators li").siblings().removeClass("active").eq(Carouselindex).addClass("active");//轮播（Carousel）指标
