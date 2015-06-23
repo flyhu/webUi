@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -90,25 +90,31 @@
 	    Carousellen =   $this.find(".carousel-inner li").length,   //获取焦点图个数
 	    Carouselindex = 0,
 	    picTimer,  //自动轮播
-		CarouselTitle=$this.find(".carousel-inner li").eq(0).attr("title"),//标题显示
-	    CarouselIndicators="";//轮播指标
-	$this.find(".carousel-title h4").html(CarouselTitle);
+		prev=$this.find("[data-slide='prev']"),//上一页
+		next=$this.find("[data-slide='next']"),//下一页
+		CarouselTitle=$this.find(".carousel-inner li").eq(0).attr("title"),//标题内容
+		CarouselTtleH4=$this.find(".carousel-title h4"),//轮播标题
+	    CarouselIndicators=$this.find(".carousel-indicators"),//轮播指标
+		CarouselIndicatorsli="",//轮播指标
+		CarouselInner=$this.find(".carousel-inner"),//轮播项目
+		CarouselInnerli=CarouselInner.find("li");//轮播项目
+	CarouselTtleH4.html(CarouselTitle);
 	for(var i=0; i < Carousellen; i++) {
-		CarouselIndicators += "<li></li>";
+		CarouselIndicatorsli += "<li></li>";
 	}
-	$this.find(".carousel-indicators").append(CarouselIndicators);
-	$this.find(".carousel-indicators li").eq(0).addClass("active");
+	CarouselIndicators.append(CarouselIndicatorsli);
+	CarouselIndicators.find("li").eq(0).addClass("active");
 	
-	$this.find(".carousel-indicators li").hover(function() {
+	CarouselIndicators.find("li").hover(function() {
 	var $thisIndicator=$(this);
 	$thisIndicator.addClass("active").siblings().removeClass("active");
 	index = $thisIndicator.index();
 	ShowCarousel(index);
-	var CarouselTitle=$this.find(".carousel-inner li").eq(index).attr("title");
-	$this.find(".carousel-title h4").html(CarouselTitle);
+	var CarouselTitle=CarouselInnerli.eq(index).attr("title");
+	CarouselTtleH4.html(CarouselTitle);
 	});
 	
-	//自动轮播时间
+	//自动轮播
 	$this.hover(function() {
 		clearInterval(picTimer);
 	},function() {
@@ -118,27 +124,28 @@
 			if(Carouselindex == Carousellen) {Carouselindex = 0;}
 		},4000); 
 	}).trigger("mouseleave");
+	
 	//上一页
-	$this.find("[data-slide='prev']").click(function() {
+	prev.click(function() {
 		Carouselindex -= 1;
 		if(Carouselindex == -1) {Carouselindex = Carousellen - 1;}
 		ShowCarousel(Carouselindex);
 	});
 
 	//下一页
-	$this.find("[data-slide='next']").click(function() {
+	next.click(function() {
 		Carouselindex += 1;
 		if(Carouselindex == Carousellen) {Carouselindex = 0;}
 		ShowCarousel(Carouselindex);
 	});
 	 //轮播（Carousel）项目切换
-	$(".carousel-inner").css("width",CarouselWidth * (Carousellen));
+	CarouselInner.css("width",CarouselWidth * (Carousellen));
 	function ShowCarousel (Carouselindex) {
 		var nowLeft = -Carouselindex*CarouselWidth; //计算ul元素的left值
-		$this.find(".carousel-inner").stop(true,false).animate({"left":nowLeft},300);
-		$this.find(".carousel-indicators li").siblings().removeClass("active").eq(Carouselindex).addClass("active");//轮播（Carousel）指标
-		var CarouselTitle=$this.find(".carousel-inner li").eq(Carouselindex).attr("title");
-	    $this.find(".carousel-title h4").html(CarouselTitle);
+		CarouselInner.stop(true,false).animate({"left":nowLeft},300);
+		CarouselIndicators.find("li").siblings().removeClass("active").eq(Carouselindex).addClass("active");//轮播（Carousel）指标
+		var CarouselTitle=CarouselInnerli.eq(Carouselindex).attr("title");
+	    CarouselTtleH4.html(CarouselTitle);
 	}
 	
 	 });					
