@@ -91,8 +91,9 @@
 //推荐格式<dl><dt data-toggle="collapse"></dt><dd data-collapse="panel-collapse"></dd></dl>
 $(function(){
 	$("[data-toggle='collapse']").click(function(){ 
-		$(this).toggleClass("current").next("[data-collapse='panel-collapse']").slideToggle("slow").siblings("[data-collapse='panel-collapse']:visible").slideUp("slow").siblings("[data-toggle='collapse']");
-		$(this).siblings("[data-toggle='collapse']").removeClass("current");
+	var $this=$(this);
+		$this.toggleClass("current").next("[data-collapse='panel-collapse']").slideToggle("slow").siblings("[data-collapse='panel-collapse']:visible").slideUp("slow").siblings("[data-toggle='collapse']");
+		$this.siblings("[data-toggle='collapse']").removeClass("current");
 	});
 });
 

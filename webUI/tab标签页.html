@@ -38,7 +38,7 @@
 //推荐格式<ul><li data-toggle="tab" data-target="目标节点"></li><li data-toggle="tab" data-target="目标节点"></li></ul><ul><li data-tab="目标节点"></li><li data-tab="目标节点"></li></ul>
 	$(function(){						
 			$("[data-toggle='tab']").hover(function(){
-				var $this=$(this);var $index=$this.index();var $target=$this.attr("data-target");
+				var $this=$(this),$index=$this.index(),$target=$this.attr("data-target");
 				$this.addClass("current").siblings("[data-toggle='tab']").removeClass("current");
 				$("[data-tab='"+$target+"']").hide().eq($index).show();
 			})

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -85,16 +85,14 @@
 //data-toggle="Carousel" 添加到轮播图节点中
 	$(function(){	
 	 $("[data-toggle='Carousel']").each(function(){
-	var $this=$(this);
-        var CarouselWidth = $this.width(); //获取轮播图图的宽度
-	var Carousellen =   $this.find(".carousel-inner li").length;   //获取焦点图个数
-	var Carouselindex = 0;
-	var picTimer;  //自动轮播
-	//标题显示
-	var CarouselTitle=$this.find(".carousel-inner li").eq(0).attr("title");
+	var $this=$(this),
+	    CarouselWidth = $this.width(), //获取轮播图图的宽度
+	    Carousellen =   $this.find(".carousel-inner li").length,   //获取焦点图个数
+	    Carouselindex = 0,
+	    picTimer,  //自动轮播
+		CarouselTitle=$this.find(".carousel-inner li").eq(0).attr("title"),//标题显示
+	    CarouselIndicators="";//轮播指标
 	$this.find(".carousel-title h4").html(CarouselTitle);
-	//轮播指标
-	var CarouselIndicators="";
 	for(var i=0; i < Carousellen; i++) {
 		CarouselIndicators += "<li></li>";
 	}
@@ -102,11 +100,12 @@
 	$this.find(".carousel-indicators li").eq(0).addClass("active");
 	
 	$this.find(".carousel-indicators li").hover(function() {
-		$(this).addClass("active").siblings().removeClass("active");
-		index = $(this).index();
-		ShowCarousel(index);
-		var CarouselTitle=$this.find(".carousel-inner li").eq(index).attr("title");
-	    $this.find(".carousel-title h4").html(CarouselTitle);
+	var $thisIndicator=$(this);
+	$thisIndicator.addClass("active").siblings().removeClass("active");
+	index = $thisIndicator.index();
+	ShowCarousel(index);
+	var CarouselTitle=$this.find(".carousel-inner li").eq(index).attr("title");
+	$this.find(".carousel-title h4").html(CarouselTitle);
 	});
 	
 	//自动轮播时间
