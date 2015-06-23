@@ -47,7 +47,7 @@
 $(function(){
 	$("[data-toggle='tooltip']").hover(function(){
 		var $this=$(this);
-		var TooltipLeft = $this.offset().left - $("[data-tooltip='show']").outerWidth()/2 + $(this).outerWidth()/2,TooltipTop = $this.offset().top - $("[data-tooltip='show']").outerHeight(),TooltipContent=$this.attr("data-original-title");
+		var TooltipLeft = $this.offset().left - $("[data-tooltip='show']").outerWidth()/2 + $this.outerWidth()/2,TooltipTop = $this.offset().top - $("[data-tooltip='show']").outerHeight(),TooltipContent=$this.attr("data-original-title");
 		$("[data-tooltip='show']").css({"left":TooltipLeft,"top":TooltipTop,"visibility":"visible"});
 		$("[data-tooltip='show'] .tooltip-inner").html(TooltipContent);
 		},function(){
