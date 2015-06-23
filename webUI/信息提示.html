@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -46,12 +46,12 @@
 //data-tooltip="show"为tooltip显示工具，放在页面结尾
 $(function(){
 	$("[data-toggle='tooltip']").hover(function(){
-		var $this=$(this);
-		var TooltipLeft = $this.offset().left - $("[data-tooltip='show']").outerWidth()/2 + $this.outerWidth()/2,TooltipTop = $this.offset().top - $("[data-tooltip='show']").outerHeight(),TooltipContent=$this.attr("data-original-title");
-		$("[data-tooltip='show']").css({"left":TooltipLeft,"top":TooltipTop,"visibility":"visible"});
-		$("[data-tooltip='show'] .tooltip-inner").html(TooltipContent);
+		var $this=$(this),$tooltipShow=$("[data-tooltip='show']");
+		var TooltipLeft = $this.offset().left - $tooltipShow.outerWidth()/2 + $this.outerWidth()/2,TooltipTop = $this.offset().top - $tooltipShow.outerHeight(),TooltipContent=$this.attr("data-original-title");
+		$tooltipShow.css({"left":TooltipLeft,"top":TooltipTop,"visibility":"visible"});
+		$tooltipShow.find(".tooltip-inner").html(TooltipContent);
 		},function(){
-			$("[data-tooltip='show']").css({"left":0,"top":0,"visibility":"hidden"});
+		  $("[data-tooltip='show']").css({"left":0,"top":0,"visibility":"hidden"});
 		})
 	
 
