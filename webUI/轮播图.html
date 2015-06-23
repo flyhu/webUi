@@ -90,8 +90,8 @@
 	    Carousellen =   $this.find(".carousel-inner li").length,   //获取焦点图个数
 	    Carouselindex = 0,
 	    picTimer,  //自动轮播
-		prev=$this.find("[data-slide='prev']"),//上一页
-		next=$this.find("[data-slide='next']"),//下一页
+		$prev=$this.find("[data-slide='prev']"),//上一页
+		$next=$this.find("[data-slide='next']"),//下一页
 		CarouselTitle=$this.find(".carousel-inner li").eq(0).attr("title"),//标题内容
 		CarouselTtleH4=$this.find(".carousel-title h4"),//轮播标题
 	    CarouselIndicators=$this.find(".carousel-indicators"),//轮播指标
@@ -126,14 +126,14 @@
 	}).trigger("mouseleave");
 	
 	//上一页
-	prev.click(function() {
+	$prev.click(function() {
 		Carouselindex -= 1;
 		if(Carouselindex == -1) {Carouselindex = Carousellen - 1;}
 		ShowCarousel(Carouselindex);
 	});
 
 	//下一页
-	next.click(function() {
+	$next.click(function() {
 		Carouselindex += 1;
 		if(Carouselindex == Carousellen) {Carouselindex = 0;}
 		ShowCarousel(Carouselindex);
