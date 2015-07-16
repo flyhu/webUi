@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -610,6 +611,70 @@ input[type=search] {
 	margin-bottom: 10px;
 	color: #737373
 }
+/*开关----*/
+.on-off {
+display: none;
+}
+.on-off+label {
+	position: relative;	
+	width: 60px;
+	height: 30px;
+	border-radius: 15px;
+	border:1px #E5E2E2 solid;
+	display: inline-block;
+	-webkit-transition: all .3s ease-in-out 0s;
+	transition: all .3s ease-in-out 0s;
+
+}
+.on-off+label:after {
+	left: 0;
+	top: -1px;
+	width: 30px;
+	content: '';
+	height: 30px;
+	position: absolute;
+	border-radius: 50%;
+	border:1px #E8E8E8 solid;
+	-webkit-transition: all .3s ease-in-out 0s;
+	transition: all .3s ease-in-out 0s;
+}
+.on-off:checked+label {
+	background: #33b6e6;
+}
+.on-off:checked+label:after {
+left: 30px;
+top: 1px;
+width: 26px;
+height: 26px;
+background: #fff;
+border:none;
+}
+/*----开关*/
+/*复选按钮----*/
+.Checkbox-Group{display:none;}
+.Checkbox-Group+label {
+	position: relative;
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+	border:1px #E5E2E2 solid;
+	-webkit-transition: all .3s ease-in-out 0s;
+	transition: all .3s ease-in-out 0s;
+}
+.Checkbox-Group:checked+label{background: #34CF50;border:none;}
+.Checkbox-Group:checked+label:after {
+	content: '\e013';	
+	position: absolute;	
+	left:5px;
+	top: 4px;
+	font-family: 'Glyphicons Halflings';
+	font-size:14px;
+	text-align:center;
+	color:#fff;
+	-webkit-transition: all .3s ease-in-out 0s;
+	transition: all .3s ease-in-out 0s;
+}
+/*---复选按钮-*/
 </style>
 </head>
 
@@ -722,6 +787,21 @@ input[type=search] {
   <button type="button" class="btn btn-default">按钮 9</button>
 </div>
 <hr />
+<div>       
+<label>   开关   </label> <br /><br />
+<input id="gear-sound" class="on-off" type="checkbox"><label for="gear-sound"></label></div>
+<div>
+<br />
+<label>   复选框   </label> <br />
+<br>
+  <input id="gear-one" class="Checkbox-Group" type="checkbox" name="CheckboxGroup1" value="复选框" >
+    <label for="gear-one"></label>
+  <br>
+
+  <input id="gear-two" type="checkbox" class="Checkbox-Group" name="CheckboxGroup1_" value="复选框">
+    <label for="gear-two"></label> 
+  
+  <br></div>
 <div  style="width:80%; padding:20px;">
 <form class="form-horizontal" role="form">
    <div class="form-group has-success">
